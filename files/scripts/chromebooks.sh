@@ -33,3 +33,7 @@ sed -i 's@Name=tuned-gui@Name=TuneD Manager@g' /usr/share/applications/tuned-gui
 
 # Enable student user generation
 systemctl enable student-user.service
+
+# Disable ublue-update and instead enable topgrade directly
+systemctl disable ublue-update.timer
+systemctl enable birralee-update.timer

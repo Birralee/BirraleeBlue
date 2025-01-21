@@ -1,2 +1,4 @@
 #!/bin/bash
-/usr/bin/topgrade --config /usr/share/birralee/topgrade-system.toml
+#/usr/bin/topgrade --config /usr/share/birralee/topgrade-system.toml
+pkexec flatpak update --system -y
+systemctl start rpm-ostreed-automatic.service

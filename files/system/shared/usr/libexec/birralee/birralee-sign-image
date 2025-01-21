@@ -7,7 +7,7 @@ if rpm-ostree status -b | grep -P "ostree-unverified-(image|registry)"; then
     systemctl daemon-reload
 
     # Rebase to signed image
-    SIGN_URI=$(rpm-ostree status -b | grep -A1 "BootedDeployment:" | grep -v "BootedDeployment" | sed -E 's/.+ostree-unverified-(image|registry):(.+)/ostree-image-signed:\2/')
+    SIGN_URI=$(rpm-ostree status -b | grep -A1 "BootedDeployment:" | grep -v "BootedDeployment" | sed -E 's/.+ostree-unverified-(image|registry):(.+)/ostree-image-signed:docker:\/\/\2/')
     echo "Signing installation - This will take a while"
     plymouth display-message --text="Signing installation - This will take a while" || true
     # shellcheck disable=SC2086
