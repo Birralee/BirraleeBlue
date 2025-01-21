@@ -24,9 +24,9 @@ modules:
         destination: /
 
   - type: bling
-    install:
+    install: []
       # Enables auto updates using ublue-update
-      - ublue-update
+      #- ublue-update
 
   - type: rpm-ostree
     repos: []

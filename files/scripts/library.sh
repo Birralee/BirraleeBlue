@@ -12,6 +12,5 @@ rpm-ostree override remove \
 # Enable librarian user generation
 systemctl enable librarian-user.service
 
-# Disable ublue-update and instead enable topgrade directly
-systemctl disable ublue-update.timer
+# Enable Birralee Update timer
 systemctl enable birralee-update.timer
