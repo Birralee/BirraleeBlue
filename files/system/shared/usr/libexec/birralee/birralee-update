@@ -1,4 +1,4 @@
 #!/bin/bash
 #/usr/bin/topgrade --config /usr/share/birralee/topgrade-system.toml
 pkexec flatpak update --system -y
-pkexec systemctl start rpm-ostreed-automatic.service
+pkexec rpm-ostree update
