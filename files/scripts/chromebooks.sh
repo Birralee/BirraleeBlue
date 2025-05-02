@@ -4,7 +4,8 @@ set -euo pipefail
 # Remove things we do not want on the image
 rpm-ostree override remove \
     distrobox \
-    toolbox && \
+    toolbox \
+    kwrite && \
 rpm-ostree override remove \
     krfb \
     krfb-libs \

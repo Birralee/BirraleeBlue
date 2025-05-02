@@ -14,7 +14,8 @@ rpm-ostree override remove \
     solaar \
     solaar-udev \
     input-remapper \
-    tailscale
+    tailscale \
+    kwrite
 
 # Enable student user generation
 systemctl enable student-user.service
