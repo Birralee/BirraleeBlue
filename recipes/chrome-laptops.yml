@@ -22,6 +22,8 @@ modules:
         destination: /
       - source: system/login/student
         destination: /
+      - source: system/powerprofile
+        destination: /
 
   - type: bling
     install: []
