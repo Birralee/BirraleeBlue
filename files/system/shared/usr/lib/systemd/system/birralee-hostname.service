@@ -1,0 +1,11 @@
+[Unit]
+Description=Change the hostname based on MAC address
+Wants=network-online.target
+After=network.target network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/libexec/birralee/birralee-hostname
+
+[Install]
+WantedBy=multi-user.target

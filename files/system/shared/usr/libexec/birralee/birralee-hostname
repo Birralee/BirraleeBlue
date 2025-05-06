@@ -1,0 +1,24 @@
+#!/bin/bash
+# List of MAC addresses
+MACLIST="/usr/lib/birralee/hostnames"
+
+# Get all MAC addresses on host
+HOSTMACS=$(ip link | grep ether | awk '{ print $2 }')
+
+# Check if there are any wifi cards on the machine and only use those if available
+if ip link | grep wl; then
+    HOSTMACS=$(ip link | grep -A1 wl | grep ether | awk '{ print $2 }')
+fi
+
+# Generate a fallback hostname using the first MAC address in the list (max 15 characters, the mac address itself is 12)
+MACNAME=$(echo "BS-$HOSTMACS" | head -n 1 | sed 's/://g')
+
+for MAC in $HOSTMACS; do
+    if [[ $(hostnamectl hostname) =~ fedora|aurora|$MACNAME ]]; then
+        # Set hostname if MAC is found on image
+        if [[ "$(hostnamectl hostname $(awk -F "," '$1 == "'$MAC'" { print $2 }' $MACLIST))" =~ fedora|aurora|$MACNAME ]]; then
+            # If mac is not found in list of hostnames, set name based on first mac address
+            hostnamectl hostname $MACNAME
+        fi
+    fi
+done

@@ -9,3 +9,6 @@ systemctl enable systemd-timesyncd.service
 
 # Make sure image is signed
 systemctl enable birralee-sign-image.service
+
+# Enable automatic hostname generation
+systemctl enable birralee-hostname.service
