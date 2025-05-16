@@ -1,6 +1,6 @@
 #!/bin/bash
 # List of MAC addresses
-MACLIST="/usr/lib/birralee/hostnames"
+MACLIST="/usr/lib/birralee/hostnames.csv"
 
 # Get all MAC addresses on host
 HOSTMACS=$(ip link | grep ether | awk '{ print $2 }')
