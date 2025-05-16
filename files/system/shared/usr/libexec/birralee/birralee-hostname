@@ -16,7 +16,7 @@ MACNAME=$(echo "BS-$HOSTMACS" | head -n 1 | sed 's/://g')
 for MAC in $HOSTMACS; do
     if [[ $(hostnamectl hostname) =~ fedora|aurora|$MACNAME ]]; then
         # Set hostname if MAC is found on image
-        if [[ "$(hostnamectl hostname $(awk -F "," '$1 == "'$MAC'" { print $2 }' $MACLIST))" =~ fedora|aurora|$MACNAME ]]; then
+        if [[ "$(hostnamectl hostname $(awk -F "," 'tolower($1) == "'$MAC'" { print $2 }' $MACLIST))" =~ fedora|aurora|$MACNAME ]]; then
             # If mac is not found in list of hostnames, set name based on first mac address
             hostnamectl hostname $MACNAME
         fi
