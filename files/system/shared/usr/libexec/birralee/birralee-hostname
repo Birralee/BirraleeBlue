@@ -7,7 +7,7 @@ HOSTMACS=$(ip link | grep ether | awk '{ print $2 }')
 
 # Check if there are any wifi cards on the machine and only use those if available
 if ip link | grep wl; then
-    HOSTMACS=$(ip link | grep -A1 wl | grep ether | awk '{ print $2 }')
+    HOSTMACS=$(ip link | grep -A1 wl | grep permaddr | awk '{ print $6 }')
 fi
 
 # Generate a fallback hostname using the first MAC address in the list (max 15 characters, the mac address itself is 12)
