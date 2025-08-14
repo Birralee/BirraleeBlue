@@ -8,14 +8,29 @@ rpm-ostree override remove \
     kde-connect \
     kde-connect-libs \
     kdeconnectd && \
+#rpm-ostree override remove \
+#    rygel \
+#    input-leap \
+#    solaar \
+#    solaar-udev \
+#    input-remapper \
+#    tailscale \
+#    kwrite
 rpm-ostree override remove \
-    rygel \
-    input-leap \
-    solaar \
-    solaar-udev \
-    input-remapper \
-    tailscale \
-    kwrite
+    power-profiles-daemon \
+    || true && \
+rpm-ostree override remove \
+    tlp \
+    tlp-rdw \
+    kwrite \
+    || true && \
+rpm-ostree install \
+    tuned \
+    tuned-ppd \
+    tuned-utils \
+    tuned-gtk \
+    tuned-profiles-atomic \
+    tuned-profiles-cpu-partitioning
 
 # Enable student user generation
 systemctl enable student-user.service
