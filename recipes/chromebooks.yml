@@ -65,6 +65,7 @@ modules:
           - org.gimp.GIMP
           - org.kde.krita
           - org.tenacityaudio.Tenacity
+          - org.audacityteam.Audacity
 
   - type: script
     scripts:

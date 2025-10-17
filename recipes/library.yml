@@ -63,6 +63,7 @@ modules:
         remove:
           # - org.gnome.eog
           - org.tenacityaudio.Tenacity
+          - org.audacityteam.Audacity
 
   - type: script
     scripts:
