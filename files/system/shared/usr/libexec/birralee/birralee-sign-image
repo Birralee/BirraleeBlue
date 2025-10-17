@@ -1,17 +1,27 @@
 #!/bin/bash
 # If we are on an unsigned image (fresh install)
 if rpm-ostree status -b | grep -P "ostree-unverified-(image|registry)"; then
-    if ! rpm-ostree status -b | grep -P "birralee-sysadm"; then
-        # Set default mount options for /home
-        MOUNT_OPTIONS="subvol=home,noatime,lazytime,commit=120,discard=async,compress-force=zstd:1,space_cache=v2,noexec"
-        perl -pi -e 's/UUID=([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12} \/home .+btrfs).+/UUID=\1    '$MOUNT_OPTIONS' 0 0/' /etc/fstab
-        systemctl daemon-reload
-    fi
-
     # Rebase to signed image
     SIGN_URI=$(rpm-ostree status -b | grep -A1 "BootedDeployment:" | grep -v "BootedDeployment" | sed -E 's/.+ostree-unverified-(image|registry):(.+)/ostree-image-signed:docker:\/\/\2/')
     echo "Signing installation - This will take a while"
     plymouth display-message --text="Signing installation - This will take a while" || true
     # shellcheck disable=SC2086
     rpm-ostree rebase -r $SIGN_URI
+fi
+
+# Make sure home is noexec
+if ! rpm-ostree status -b | grep -P "birralee-sysadm"; then
+    if ! grep "noexec" "/etc/fstab"; then
+        # Set default mount options for /home
+        MOUNT_OPTIONS="subvol=home,noatime,lazytime,commit=120,discard=async,compress-force=zstd:1,space_cache=v2,noexec"
+        perl -pi -e 's/UUID=([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12} \/home .+btrfs).+/UUID=\1    '$MOUNT_OPTIONS' 0 0/' /etc/fstab
+        systemctl daemon-reload
+    fi
+else
+    if grep "noexec" "/etc/fstab"; then
+        # Set default mount options for /home
+        MOUNT_OPTIONS="subvol=home,noatime,lazytime,commit=120,discard=async,compress-force=zstd:1,space_cache=v2"
+        perl -pi -e 's/UUID=([a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12} \/home .+btrfs).+/UUID=\1    '$MOUNT_OPTIONS' 0 0/' /etc/fstab
+        systemctl daemon-reload
+    fi
 fi
