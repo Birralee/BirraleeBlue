@@ -26,12 +26,15 @@ modules:
         destination: /
 
   - type: rpm-ostree
-    repos: []
+    repos:
       # - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
+      - https://copr.fedorainfracloud.org/coprs/dejan/lazygit/repo/fedora-%OS_VERSION%/dejan-lazygit-fedora-%OS_VERSION%.repo
     install:
       # - micro
       # - starship
       - python3-idle
+      - thonny
+      - lazygit
     remove: []
       #- firefox # default firefox removed in favor of flatpak
       #- firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
