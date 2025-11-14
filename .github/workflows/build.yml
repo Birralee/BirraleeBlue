@@ -27,6 +27,7 @@ jobs:
           - chromebooks.yml
           - chrome-laptops.yml
           - sysadm.yml
+          - sysadm-niri.yml
     steps:
        # Maximize build space
       - name: Maximize build space
