@@ -33,7 +33,9 @@ modules:
       - virt-manager
       - qemu-kvm
       - edk2-ovmf
-    remove: []
+      - ptyxis
+    remove:
+      - foot
       #- firefox # default firefox removed in favor of flatpak
       #- firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
 
