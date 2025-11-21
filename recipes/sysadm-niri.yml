@@ -34,6 +34,7 @@ modules:
       - qemu-kvm
       - edk2-ovmf
       - ptyxis
+      - dolphin
     remove:
       - foot
       #- firefox # default firefox removed in favor of flatpak
