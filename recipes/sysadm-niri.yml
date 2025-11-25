@@ -35,7 +35,8 @@ modules:
       - edk2-ovmf
       - ptyxis
       - gnome-disk-utility
-    remove: []
+    remove:
+      - pipewire-config-raop
       #- firefox # default firefox removed in favor of flatpak
       #- firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
 
