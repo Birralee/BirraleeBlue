@@ -34,9 +34,8 @@ modules:
       - qemu-kvm
       - edk2-ovmf
       - ptyxis
-      - dolphin
-    remove:
-      - foot
+      - gnome-disk-utility
+    remove: []
       #- firefox # default firefox removed in favor of flatpak
       #- firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
 
