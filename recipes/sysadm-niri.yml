@@ -35,6 +35,14 @@ modules:
       - edk2-ovmf
       - ptyxis
       - gnome-disk-utility
+      - openvpn
+      - NetworkManager-openvpn
+      - vim
+      - ibus
+      - ibus-setup
+      - ibus-gtk2
+      - ibus-gtk3
+      - ibus-gtk4
     remove:
       - pipewire-config-raop
       #- firefox # default firefox removed in favor of flatpak
