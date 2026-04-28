@@ -62,6 +62,7 @@ modules:
           # - org.gnome.eog
           - org.mozilla.firefox
           - org.onlyoffice.desktopeditors
+          - com.collaboraoffice.Office
           - org.kde.okular
           - org.gimp.GIMP
           - org.kde.krita

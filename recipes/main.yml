@@ -54,6 +54,7 @@ modules:
           - org.mozilla.firefox
           - com.google.Chrome
           - org.onlyoffice.desktopeditors
+          - com.collaboraoffice.Office
           - org.kde.okular
           - org.gimp.GIMP
           - org.kde.krita
