@@ -37,7 +37,7 @@ modules:
       - gnome-disk-utility
       - openvpn
       - NetworkManager-openvpn
-      - vim
+      - neovim
       - ibus
       - ibus-setup
       - ibus-gtk2
