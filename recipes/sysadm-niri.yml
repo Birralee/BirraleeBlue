@@ -43,8 +43,7 @@ modules:
       - ibus-gtk2
       - ibus-gtk3
       - ibus-gtk4
-    remove:
-      - pipewire-config-raop
+    remove: []
       #- firefox # default firefox removed in favor of flatpak
       #- firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
 
