@@ -5,8 +5,8 @@ name: birralee-sysadm
 description: Custom uBlue fedora images for use at Birralee
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/bazzite-dx
-image-version: 43 # latest is also supported if you want new updates ASAP
+base-image: ghcr.io/ublue-os/bazzite
+image-version: 44 # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -24,13 +24,26 @@ modules:
         destination: /
 
   - type: rpm-ostree
-    repos: []
-      # - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
+    repos:
+     - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
     install:
       # - micro
-      # - starship
+      - starship
       - dymo-cups-drivers
       - virt-manager
+      - samba
+      - klassy
+      - kwin-effect-roundcorners
+      - rocm-hip
+      - rocm-opencl
+      - rocm-clinfo
+      - rocm-smi
+      - qemu
+      - libvirt
+      - qemu-kvm
+      - virt-manager
+      - edk2-ovmf
+      - guestfs-tools
     remove: []
       #- firefox # default firefox removed in favor of flatpak
       #- firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
