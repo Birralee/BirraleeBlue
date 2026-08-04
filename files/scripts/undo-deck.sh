@@ -16,3 +16,5 @@ if [ -d "/etc/sddm.conf.d" ]; then
 elif [ -d "/etc/plasmalogin.conf.d" ]; then
     rm /etc/plasmalogin.conf.d/virtualkbd.conf
 fi
+
+systemctl enable plasmalogin

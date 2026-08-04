@@ -46,9 +46,11 @@ modules:
       - virt-manager
       - edk2-ovmf
       - guestfs-tools
-    remove: []
+      - plasma-login-manager
+    remove:
       #- firefox # default firefox removed in favor of flatpak
       #- firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
+      - sddm
 
   - type: default-flatpaks
     configurations:
