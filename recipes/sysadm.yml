@@ -5,8 +5,8 @@ name: birralee-sysadm
 description: Custom uBlue fedora images for use at Birralee
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/bazzite-deck
-image-version: testing # latest is also supported if you want new updates ASAP
+base-image: ghcr.io/ublue-os/bazzite-dx
+image-version: stable # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -32,25 +32,19 @@ modules:
       # - micro
       - starship
       - dymo-cups-drivers
-      - virt-manager
       - samba
       - klassy
       - kwin-effect-roundcorners
-      - rocm-hip
-      - rocm-opencl
-      - rocm-clinfo
-      - rocm-smi
-      - qemu
-      - libvirt
-      - qemu-kvm
-      - virt-manager
-      - edk2-ovmf
-      - guestfs-tools
-      - plasma-login-manager
     remove:
       #- firefox # default firefox removed in favor of flatpak
       #- firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
-      - sddm
+      - code
+      - docker-buildx-plugin
+      - docker-ce
+      - docker-ce-cli
+      - docker-compose-plugin
+      - containerd.io
+      - kwrite
 
   - type: default-flatpaks
     configurations:
