@@ -5,7 +5,7 @@ name: birralee-sysadm-niri
 description: Custom uBlue fedora images for use at Birralee
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/zirconium-dev/zirconium
+base-image: ghcr.io/bazzirco/bazzirco
 image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
@@ -23,29 +23,32 @@ modules:
       - source: system/powerprofile
         destination: /
 
-  - type: rpm-ostree
-    repos: []
-      # - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
+  - type: dnf
+    repos:
+      files: []
+        # - https://copr.fedorainfracloud.org/coprs/atim/starship/repo/fedora-%OS_VERSION%/atim-starship-fedora-%OS_VERSION%.repo
     install:
-      # - micro
-      # - starship
-      - dymo-cups-drivers
-      - virt-manager
-      - qemu-kvm
-      - edk2-ovmf
-      - ptyxis
-      - gnome-disk-utility
-      - openvpn
-      - NetworkManager-openvpn
-      - neovim
-      - ibus
-      - ibus-setup
-      - ibus-gtk2
-      - ibus-gtk3
-      - ibus-gtk4
-    remove: []
-      #- firefox # default firefox removed in favor of flatpak
-      #- firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
+      packages:
+        # - micro
+        # - starship
+        - dymo-cups-drivers
+        - virt-manager
+        - qemu-kvm
+        - edk2-ovmf
+        - ptyxis
+        - gnome-disk-utility
+        - openvpn
+        - NetworkManager-openvpn
+        - neovim
+        - ibus
+        - ibus-setup
+        - ibus-gtk2
+        - ibus-gtk3
+        - ibus-gtk4
+    remove:
+      packages: []
+        #- firefox # default firefox removed in favor of flatpak
+        #- firefox-langpacks # langpacks needs to also be removed to prevent dependency problems
 
   - type: default-flatpaks
     configurations:
